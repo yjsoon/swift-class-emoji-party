@@ -20,6 +20,7 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
     var animator: UIDynamicAnimator!
     var collisions: UICollisionBehavior!
     var gravity: UIGravityBehavior!
+    var dynamics: UIDynamicItemBehavior!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,10 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         gravity = UIGravityBehavior(items: [])
         animator.addBehavior(gravity)
         
+        dynamics = UIDynamicItemBehavior(items: [])
+        dynamics.elasticity = 1.1
+        dynamics.resistance = 0
+        animator.addBehavior(dynamics)
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +69,7 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         mainView.addSubview(label)
     
         collisions.addItem(label)
+        dynamics.addItem(label)
 //        gravity.addItem(label)
         
         let push = UIPushBehavior(items: [label], mode: .instantaneous)
