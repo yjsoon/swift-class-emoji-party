@@ -9,13 +9,13 @@
 import UIKit
 
 private let reuseIdentifier = "Cell"
-private let labelWidth: Double = 60
+private let labelWidth: Double = 80
 
 class EmojiViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollisionBehaviorDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mainView: UIView!
-    var emojis = ["🧙‍♂️", "🧛‍♀️", "🤢", "👨‍🔬", "💩", "👽", "👾", "🙆‍♀️"]
+    var emojis = ["🧙‍♂️", "🧛‍♀️", "🤢", "👨‍🔬", "💩", "👽", "👾", "🙆‍♀️", "🧚‍♀️", "🧟‍♀️", "🍣"]
     
     var animator: UIDynamicAnimator!
     var collisions: UICollisionBehavior!
@@ -35,8 +35,9 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         animator.addBehavior(gravity)
         
         dynamics = UIDynamicItemBehavior(items: [])
-        dynamics.elasticity = 1.1
-        dynamics.resistance = 0
+        dynamics.elasticity = 1.05
+        dynamics.resistance = -0.05
+        dynamics.friction = 0
         animator.addBehavior(dynamics)
     }
 
@@ -64,7 +65,7 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         let randY = drand48() * (Double(mainView.frame.height) - labelWidth)
         let label = UILabel(frame: CGRect(x: randX, y: randY, width: labelWidth, height: labelWidth))
         label.text = selectedEmoji
-        label.font = label.font.withSize(60)
+        label.font = label.font.withSize(120)
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         mainView.addSubview(label)
@@ -75,9 +76,26 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         let push = UIPushBehavior(items: [label], mode: .instantaneous)
         push.angle = CGFloat(drand48() * .pi * 2)
-        push.magnitude = CGFloat(1.0 + drand48() * 2)
+        push.magnitude = CGFloat(3.0 + drand48() * 2)
         animator.addBehavior(push)
-
+        
+        UIView.animate(withDuration: 3,
+                       delay: 0,
+                       options: [.repeat, .autoreverse],
+                       animations: {
+            label.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        }, completion: nil)
+        
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (timer) in
+            UIView.animate(withDuration: 5, animations: {
+                label.alpha = 0
+            }, completion: { (_) in
+                label.removeFromSuperview()
+                push.removeItem(label)
+                self.dynamics.removeItem(label)
+                self.collisions.removeItem(label)
+            })
+        }
     }
     
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
