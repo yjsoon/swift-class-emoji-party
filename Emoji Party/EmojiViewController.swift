@@ -9,6 +9,7 @@
 import UIKit
 
 private let reuseIdentifier = "Cell"
+private let labelWidth: Double = 60
 
 class EmojiViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -41,9 +42,15 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedEmoji = emojis[indexPath.item]
         
-        let label = UILabel(frame: CGRect(x: 100, y: 100, width: 60, height: 60))
+        let randX = drand48() * (Double(mainView.frame.width) - labelWidth)
+        let randY = drand48() * (Double(mainView.frame.height) - labelWidth)
+        let label = UILabel(frame: CGRect(x: randX, y: randY, width: labelWidth, height: labelWidth))
         label.text = selectedEmoji
+        label.font = label.font.withSize(60)
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
         mainView.addSubview(label)
+
         
     }
 
