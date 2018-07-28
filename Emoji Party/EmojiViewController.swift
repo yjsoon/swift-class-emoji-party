@@ -11,7 +11,7 @@ import UIKit
 private let reuseIdentifier = "Cell"
 private let labelWidth: Double = 60
 
-class EmojiViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class EmojiViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollisionBehaviorDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mainView: UIView!
@@ -28,6 +28,7 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         animator = UIDynamicAnimator(referenceView: mainView)
         collisions = UICollisionBehavior(items: [])
         collisions.translatesReferenceBoundsIntoBoundary = true
+        collisions.collisionDelegate = self
         animator.addBehavior(collisions)
         
         gravity = UIGravityBehavior(items: [])
@@ -77,6 +78,10 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         push.magnitude = CGFloat(1.0 + drand48() * 2)
         animator.addBehavior(push)
 
+    }
+    
+    func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
+        print("ouch")
     }
 
 
