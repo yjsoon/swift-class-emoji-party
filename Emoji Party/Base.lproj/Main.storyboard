@@ -32,7 +32,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="71R-Ho-a4M">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="71R-Ho-a4M" customClass="EmojiCollectionViewCell" customModule="Emoji_Party" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -53,8 +53,15 @@
                                             <constraint firstAttribute="trailingMargin" secondItem="PM0-oH-MIN" secondAttribute="trailing" id="Awv-ub-Tty"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="PM0-oH-MIN" secondAttribute="bottom" id="H9b-ad-XMe"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="label" destination="PM0-oH-MIN" id="uVT-ze-bmD"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Ohg-cf-e27"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="feN-AW-GkM"/>
+                                </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XBg-xc-aWg">
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
