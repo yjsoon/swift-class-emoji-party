@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dZo-QO-wP9">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l36-nC-1rX">
+    <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,7 +16,7 @@
             <objects>
                 <collectionViewController id="k9O-RJ-sTF" customClass="ThemeCollectionViewController" customModule="Emoji_Party" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="snZ-QD-lcV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="0e7-1a-Wyo">
@@ -27,7 +27,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ThemeCell" id="N1A-CM-C5a" customClass="ThemeCollectionViewCell" customModule="Emoji_Party" customModuleProvider="target">
-                                <rect key="frame" x="85.5" y="7" width="204" height="195"/>
+                                <rect key="frame" x="58" y="7" width="204" height="195"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="204" height="195"/>
@@ -75,7 +75,7 @@
                                     <outlet property="detailLabel" destination="M9x-cN-afP" id="OXh-0t-ijS"/>
                                     <outlet property="outlineView" destination="krS-3K-5x3" id="zyu-LL-tSS"/>
                                     <outlet property="titleLabel" destination="anb-ti-PpG" id="gzl-OE-euz"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="chooseTheme" id="aQn-fZ-hc0"/>
+                                    <segue destination="BYZ-38-t0r" kind="showDetail" identifier="chooseTheme" id="aQn-fZ-hc0"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -95,11 +95,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="EmojiViewController" customModule="Emoji_Party" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="703.5" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9ZA-D1-4TU">
-                                <rect key="frame" x="0.0" y="64" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="20" width="703.5" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="TRN-Gd-2Hr"/>
@@ -143,7 +143,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XBg-xc-aWg">
-                                <rect key="frame" x="0.0" y="164" width="375" height="503"/>
+                                <rect key="frame" x="0.0" y="120" width="703.5" height="648"/>
                                 <color key="backgroundColor" red="0.87268333060000003" green="1" blue="0.96326430090000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                         </subviews>
@@ -166,7 +166,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="133.5832083958021"/>
+            <point key="canvasLocation" x="-449" y="1061"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="VNW-7U-xTi">
+            <objects>
+                <splitViewController id="l36-nC-1rX" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="dZo-QO-wP9" kind="relationship" relationship="masterViewController" id="ser-Z6-rht"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="detailViewController" id="LNi-EG-f48"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vtA-Qi-kMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1352" y="858"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="K0a-Kd-Osm">
@@ -174,7 +187,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dZo-QO-wP9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="U8M-cm-Jm3">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -187,4 +200,7 @@
             <point key="canvasLocation" x="-594.39999999999998" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="aQn-fZ-hc0"/>
+    </inferredMetricsTieBreakers>
 </document>
