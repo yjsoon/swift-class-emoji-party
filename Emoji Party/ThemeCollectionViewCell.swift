@@ -10,4 +10,8 @@ import UIKit
 
 class ThemeCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var outlineView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    
 }
