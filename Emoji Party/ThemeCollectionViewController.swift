@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "ThemeCell"
 
-class ThemeCollectionViewController: UICollectionViewController {
+class ThemeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     struct EmojiTheme {
         var title: String
@@ -50,7 +50,7 @@ class ThemeCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return emojiThemes.count 
+        return emojiThemes.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -60,9 +60,21 @@ class ThemeCollectionViewController: UICollectionViewController {
         let emojis = String(emojiThemes[indexPath.item].emojis)
         cell.detailLabel.text = emojis
         
+        cell.outlineView.layer.shadowColor = UIColor.black.cgColor
+        cell.outlineView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        cell.outlineView.layer.shadowOpacity = 0.5
+        cell.outlineView.layer.shadowRadius = 8
+        cell.outlineView.layer.cornerRadius = 20
+        
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: view.frame.width / 2 - 10, height: 200)
+        
+    }
+    
     // MARK: UICollectionViewDelegate
 
     /*
