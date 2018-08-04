@@ -32,15 +32,25 @@ class ThemeCollectionViewController: UICollectionViewController, UICollectionVie
         // Dispose of any resources that can be recreated.
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "chooseTheme" {
+            let destination = segue.destination as! EmojiViewController
+            // This is horrijiber
+//            let selectedIndexPath = collectionView?.indexPathsForSelectedItems?[0]
+//            destination.emojis = emojiThemes[(selectedIndexPath?.item)!].emojis
+            
+            // Instead, we check the sender, and find out where it is in collectionView
+            if let cell = sender as? ThemeCollectionViewCell, let indexPath = collectionView?.indexPath(for: cell) {
+                destination.emojis = emojiThemes[indexPath.item].emojis
+            }
+            
+        }
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
 

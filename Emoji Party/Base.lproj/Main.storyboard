@@ -75,7 +75,7 @@
                                     <outlet property="detailLabel" destination="M9x-cN-afP" id="OXh-0t-ijS"/>
                                     <outlet property="outlineView" destination="krS-3K-5x3" id="zyu-LL-tSS"/>
                                     <outlet property="titleLabel" destination="anb-ti-PpG" id="gzl-OE-euz"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="aQn-fZ-hc0"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="chooseTheme" id="aQn-fZ-hc0"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
