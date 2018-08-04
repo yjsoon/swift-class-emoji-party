@@ -11,6 +11,17 @@ import UIKit
 private let reuseIdentifier = "ThemeCell"
 
 class ThemeCollectionViewController: UICollectionViewController {
+    
+    struct EmojiTheme {
+        var title: String
+        var emojis: [Character]
+    }
+    
+    let emojiThemes = [
+        EmojiTheme(title: "Animals", emojis: ["🦁","🐹","🐼","🐔","🦊","🐰"]),
+        EmojiTheme(title: "Cats", emojis: ["😺","😸","😹","😻","😼","🙀"]),
+        EmojiTheme(title: "Food", emojis: ["🌮","🥪","🍕","🍖","🍔","🌽"])
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,13 +50,16 @@ class ThemeCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return emojiThemes.count 
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThemeCollectionViewCell
     
-    
+        cell.titleLabel.text = emojiThemes[indexPath.item].title
+        let emojis = String(emojiThemes[indexPath.item].emojis)
+        cell.detailLabel.text = emojis
+        
         return cell
     }
 
