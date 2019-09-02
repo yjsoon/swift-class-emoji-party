@@ -14,7 +14,7 @@ class ThemeCollectionViewController: UICollectionViewController, UICollectionVie
     
     struct EmojiTheme {
         var title: String
-        var emojis: [Character]
+        var emojis: [String]
     }
     
     let emojiThemes = [
@@ -67,7 +67,7 @@ class ThemeCollectionViewController: UICollectionViewController, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThemeCollectionViewCell
     
         cell.titleLabel.text = emojiThemes[indexPath.item].title
-        let emojis = String(emojiThemes[indexPath.item].emojis)
+        let emojis = emojiThemes[indexPath.item].emojis.joined(separator: " ")
         cell.detailLabel.text = emojis
         
         cell.outlineView.layer.shadowColor = UIColor.black.cgColor

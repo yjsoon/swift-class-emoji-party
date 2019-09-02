@@ -15,7 +15,7 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mainView: UIView!
-    var emojis: [Character] = ["🧙‍♂️", "🧛‍♀️", "🤢", "👨‍🔬", "💩", "👽", "👾", "🙆‍♀️", "🧚‍♀️", "🧟‍♀️", "🍣"]
+    var emojis: [String] = ["🧙‍♂️", "🧛‍♀️", "🤢", "👨‍🔬", "💩", "👽", "👾", "🙆‍♀️", "🧚‍♀️", "🧟‍♀️", "🍣"]
     
     var animator: UIDynamicAnimator!
     var collisions: UICollisionBehavior!
@@ -53,7 +53,7 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EmojiCollectionViewCell
         
-        cell.label.text = String(emojis[indexPath.item])
+        cell.label.text = emojis[indexPath.item]
         
         return cell
     }
@@ -64,7 +64,7 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         let randX = drand48() * (Double(mainView.frame.width) - labelWidth)
         let randY = drand48() * (Double(mainView.frame.height) - labelWidth)
         let label = UILabel(frame: CGRect(x: randX, y: randY, width: labelWidth, height: labelWidth))
-        label.text = String(selectedEmoji)
+        label.text = selectedEmoji
         label.font = label.font.withSize(120)
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
